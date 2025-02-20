@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"net/http"
@@ -42,7 +43,7 @@ func main() {
 	fmt.Println("\nShutting down server...")
 
 	// Create a timeout context for shutdown
-	ctx, cancel := time.WithTimeout(context.Background(), 5*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
 	if err := server.Shutdown(ctx); err != nil {
